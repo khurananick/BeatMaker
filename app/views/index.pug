@@ -1,0 +1,29 @@
+extend layout
+block scripts
+  //script(src='//www.midijs.net/lib/midi.js' type="text/javascript")
+  script(src="/js/lib/Tone-13.3.1.min.js" type="text/javascript")
+  script(src="/js/lib/scribbletune-1.9.4.js" type="text/javascript")
+  script(src="/js/pub/script.js" type="text/javascript")
+block content
+  div(class="row")
+    div(class="col-md-3" style="padding:0;margin:0;")
+      ul(class="list-group")
+        li(class="list-group-item text-center" style="background-color:#ddd;")
+            label Beat Type
+        li(class="list-group-item")
+          label
+            input(type="radio" name="type" checked="checked" value="trap")
+            |  Trap
+        //li(class="list-group-item")
+          label
+            input(type="radio" name="type" value="edm")
+            |  EDM
+    div(class="col-md-9")
+      div(class="panel panel-default")
+        div(class="panel-body")
+          div(class="text-center")
+            audio(id="rec" controls="controls")
+            br
+            button(id="play" class="btn btn-primary") Create Beat
+            |  | 
+            button(id="download" class="btn btn-default" disabled="disabled") Download
