@@ -12,7 +12,7 @@ const router = express.Router();
 const httpApp = express();
 httpApp.set('views', __dirname + "/app/views");
 httpApp.set('view engine', 'pug');
-httpApp.use(express.static(STATIC_DIR));
+httpApp.use("/static", express.static(STATIC_DIR));
 httpApp.use(bodyParser.json({limit: '50mb', parameterLimit: 10000}));
 httpApp.use(bodyParser.urlencoded({limit: '50mb', parameterLimit: 10000, extended: true}));
 httpApp.use(cookieParser());

@@ -1,29 +1,24 @@
 doctype
 html
   head
-    title #{title}
-    script(crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js")
-    script(crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js")
+    title BeatMaker
+    meta(name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width")
+    script(crossorigin src="https://unpkg.com/react@16.13.1/umd/react.development.js")
+    script(crossorigin src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js")
+    script(crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js")
     script(crossorigin src="https://unpkg.com/@material-ui/core@4.11.0/umd/material-ui.production.min.js")
+    script(crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.3.1/Tone.min.js")
+    script(crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/scribbletune/1.9.4/scribbletune.js")
     body
-      div(id="errors" style="background: #c00; color: #fff; display: none; margin: -20px -20px 20px; padding: 20px; white-space: pre-wrap;")
       div(id="root")
       script.
+        window.files = !{mp3s};
         window.addEventListener('click', function(e) {
           if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
             e.preventDefault();
           }
         });
-        window.onerror = function(message, source, line, col, error) {
-          var text = error ? error.stack || error : message + ' (at ' + source + ':' + line + ':' + col + ')';
-          errors.textContent += text + '\n';
-          errors.style.display = '';
-        };
-        console.error = (function(old) {
-          return function error() {
-            errors.textContent += Array.prototype.slice.call(arguments).join(' ') + '\n';
-            errors.style.display = '';
-            old.apply(this, arguments);
-          }
-        })(console.error);
-    script(type="text/jsx" src="/js/app.jsx")
+    script(type="text/jsx" src="/static/js/instruments.jsx")
+    script(type="text/jsx" src="/static/js/controls.jsx")
+    script(type="text/jsx" src="/static/js/grid.jsx")
+    script(type="text/jsx" src="/static/js/app.jsx")
